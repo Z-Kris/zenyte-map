@@ -95,6 +95,8 @@ export var CollectionControl = L.Control.extend({
         this._drawnMouseArea = undefined;    
         this._editing = false;
 
+        const base = import.meta.env.BASE_URL;
+
         var container = L.DomUtil.create('div', 'leaflet-bar leaflet-control noselect');
         container.style.background = 'none';
         container.style.width = '70px';
@@ -120,24 +122,40 @@ export var CollectionControl = L.Control.extend({
         });
 
         // Area control
-        this._createControl('<img src="/css/images/area-icon.png" alt="Area" title="Area" height="30" width="30">', container, function(e) {
-            this._toggleCollectionMode(this._areas, "areas_converter", e.target);
-        });        
+        this._createControl(
+            `<img src="${base}css/images/area-icon.png" alt="Area" title="Area" height="30" width="30">`,
+            container,
+            function(e) {
+                this._toggleCollectionMode(this._areas, "areas_converter", e.target);
+            }
+        );
 
         // Poly Area control
-        this._createControl('<img src="/css/images/polyarea-icon.png" alt="Poly Area" title="Poly Area" height="30" width="30">', container, function(e) {
-            this._toggleCollectionMode(this._polyArea, "polyarea_converter", e.target);
-        });
+        this._createControl(
+            `<img src="${base}css/images/polyarea-icon.png" alt="Poly Area" title="Poly Area" height="30" width="30">`,
+            container,
+            function(e) {
+                this._toggleCollectionMode(this._polyArea, "polyarea_converter", e.target);
+            }
+        );
 
         // Path control
-        this._createControl('<img src="/css/images/path-icon.png" alt="Path" title="Path" height="30" width="30">', container, function(e) {
-            this._toggleCollectionMode(this._path, "path_converter", e.target);
-        });
+        this._createControl(
+            `<img src="${base}css/images/path-icon.png" alt="Path" title="Path" height="30" width="30">`,
+            container,
+            function(e) {
+                this._toggleCollectionMode(this._path, "path_converter", e.target);
+            }
+        );
 
         // Dax Path control
-        this._createControl('<img src="/css/images/dax-path-icon.png" alt="Dax Path" title="Dax Path" height="25" width="30">', container, function(e) {
-            this._toggleCollectionMode(this._daxPath, "path_converter", e.target);
-        });
+        this._createControl(
+            `<img src="${base}css/images/dax-path-icon.png" alt="Dax Path" title="Dax Path" height="25" width="30">`,
+            container,
+            function(e) {
+                this._toggleCollectionMode(this._daxPath, "path_converter", e.target);
+            }
+        );
 
         // Undo control
         this._createControl('<i class="fa fa-undo" aria-hidden="true"></i>', container, function(e) {
